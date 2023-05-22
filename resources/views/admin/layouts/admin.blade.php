@@ -63,6 +63,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('admin-assets/assets/js/config.js') }}"></script>
+    @livewireStyles
   </head>
 
   <body>
@@ -227,7 +228,7 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
+{{-- 
     <div class="buy-now">
       <a
         href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
@@ -235,7 +236,22 @@
         class="btn btn-danger btn-buy-now"
         >Upgrade to Pro</a
       >
+    </div> --}}
+
+    
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">{{ config('app.name') }}</strong>
+          <small>Just Now</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="message">
+          
+        </div>
+      </div>
     </div>
+    
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -258,5 +274,21 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js')}}"></script>
+    @livewireScripts
+
+    <script>
+        window.addEventListener('message', event => {
+            var toastDOMElement = document.getElementById("liveToast");
+            $('#message').text(event.detail.message);
+            var myToast = new bootstrap.Toast(toastDOMElement);
+            myToast.show();
+            setTimeout(function() {
+                myToast.hide();
+            }, 5000);
+        });
+        window.addEventListener('modal-close', event => {
+            $('#add').modal('hide');
+        })
+    </script>
   </body>
 </html>
