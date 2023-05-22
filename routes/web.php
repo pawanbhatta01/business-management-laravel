@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,10 @@ Route::get('/', function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('', function () {
         return view('admin.index');
+    })->name('dashboard');
+
+    Route::prefix('business')->group(function () {
+        Route::get('', [BusinessController::class, 'manageBusinesses'])->name('manageBusinesses');
     });
 });
 
