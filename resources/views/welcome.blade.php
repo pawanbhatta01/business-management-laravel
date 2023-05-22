@@ -61,13 +61,14 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <form action="">
+                                            <form action="{{ route('login') }}" method="POST">
+                                                @csrf
                                                 <div class="modal-body">
                                                     <div class="mb-3">
                                                         <label for="email" class="form-label">Email address <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="email" class="form-control" id="email"
-                                                            aria-describedby="emailError" name="email">
+                                                            aria-describedby="emailError" name="email" required>
                                                         @error('email')
                                                             <span id="emailError"
                                                                 class="form-text text-danger">{{ $message }}</span>
@@ -77,7 +78,7 @@
                                                         <label for="password" class="form-label">Password <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="password" class="form-control" id="password"
-                                                            aria-describedby="passwordError" name="password">
+                                                            aria-describedby="passwordError" name="password" required>
                                                         @error('password')
                                                             <span id="passwordError"
                                                                 class="form-text text-danger">{{ $message }}</span>
@@ -103,13 +104,14 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <form action="">
+                                            <form action="{{ route('register') }}" method="POST">
+                                                @csrf
                                                 <div class="modal-body">
                                                     <div class="mb-3">
                                                         <label for="name" class="form-label">Name <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="name"
-                                                            aria-describedby="nameError" name="name">
+                                                            aria-describedby="nameError" name="name" required>
                                                         @error('name')
                                                             <span id="nameError"
                                                                 class="form-text text-danger">{{ $message }}</span>
@@ -119,7 +121,7 @@
                                                         <label for="email" class="form-label">Email address <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="email" class="form-control" id="email"
-                                                            aria-describedby="emailError" name="email">
+                                                            aria-describedby="emailError" name="email" required>
                                                         @error('email')
                                                             <span id="emailError"
                                                                 class="form-text text-danger">{{ $message }}</span>
@@ -129,7 +131,7 @@
                                                         <label for="password" class="form-label">Password <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="password" class="form-control" id="password"
-                                                            aria-describedby="passwordError" name="password">
+                                                            aria-describedby="passwordError" name="password" required>
                                                         @error('password')
                                                             <span id="passwordError"
                                                                 class="form-text text-danger">{{ $message }}</span>
@@ -141,7 +143,7 @@
                                                         <input type="password" class="form-control"
                                                             id="password_confirmation"
                                                             aria-describedby="password_confirmationError"
-                                                            name="password_confirmation">
+                                                            name="password_confirmation" required>
                                                         @error('password_confirmation')
                                                             <span id="password_confirmationError"
                                                                 class="form-text text-danger">{{ $message }}</span>
@@ -158,9 +160,27 @@
                                     </div>
                                 </div>
                             @else
-                                <a class="nav-link text-primary" href="">
-                                    Dashboard
-                                </a>
+                                <span class="dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href=""
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/admin">Dashboard
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </span>
                             @endif
                         </div>
                     </div>

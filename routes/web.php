@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('', function () {
         return view('admin.index');
     });
