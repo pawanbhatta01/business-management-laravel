@@ -164,10 +164,14 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          class="d-none">
+                          @csrf
+                      </form>
                     </li>
                   </ul>
                 </li>
@@ -241,7 +245,7 @@
     
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
       <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
+        <div class="toast-header bg-success">
           <strong class="me-auto">{{ config('app.name') }}</strong>
           <small>Just Now</small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -288,6 +292,10 @@
         });
         window.addEventListener('modal-close', event => {
             $('#add').modal('hide');
+            $('#edit').modal('hide');
+            $('#delete').modal('hide');
+            $('#restore').modal('hide');
+            $('#deletePermanent').modal('hide');
         })
     </script>
   </body>
