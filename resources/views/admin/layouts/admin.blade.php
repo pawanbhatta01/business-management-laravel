@@ -117,7 +117,16 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="{{ asset('admin-assets/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                      @if (Auth::user()->image)
+<img src="{{ asset('images/' . Auth::user()->image) }}" class="w-px-40 h-auto rounded-circle" />
+@else
+@php
+    $name = Auth::user()->name;
+    $name = explode(' ', $name);
+    $name = strtoupper(substr($name[0], 0, 1) . substr($name[1], 0, 1));
+@endphp
+<div class="w-px-40 h-px-40 rounded-circle border text-center p-2" style="background-color: rgb(222, 219, 219)">{{ $name }}</div>
+@endif
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">

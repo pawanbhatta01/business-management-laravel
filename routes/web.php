@@ -28,7 +28,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('business', [BusinessController::class, 'manageBusinesses'])->name('manageBusinesses');
 
     Route::prefix('business')->name('business.')->group(function () {
-        Route::get('{slug}/home', [BusinessController::class, 'about'])->name('home');
+        Route::get('{slug}/', [BusinessController::class, 'index'])->name('home');
     });
 });
 

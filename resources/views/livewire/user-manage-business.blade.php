@@ -103,7 +103,8 @@
                                     </button>
                                     @if ($business->status)
                                         <a name="" id="" class="btn btn-secondary btn-sm mb-2"
-                                            href="#" role="button">Manage</a>
+                                            href="{{ route('business.home', $business->slug) }}"
+                                            role="button">Manage</a>
                                     @endif
                                     <!-- Modal -->
                                     <div wire:ignore.self class="modal fade" id="view" tabindex="-1"

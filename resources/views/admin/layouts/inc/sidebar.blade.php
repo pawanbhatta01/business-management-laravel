@@ -56,22 +56,21 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboard -->
-        <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-            <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
-            </a>
-        </li>
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Business</span>
-        </li>
-
         @php
             $routeName = Illuminate\Support\Facades\Route::current()->getName();
             $routeName = explode('.', $routeName)[0];
         @endphp
-        @if ($routeName == 'manageBusinesses')
+        @if ($routeName == 'manageBusinesses' || $routeName == 'dashboard')
+            <!-- Dashboard -->
+            <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Business</span>
+            </li>
             <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
                 <a href="{{ route('manageBusinesses') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-dock-top"></i>
@@ -81,8 +80,20 @@
         @elseif($routeName == 'business')
             <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
                 <a href="{{ route('manageBusinesses') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-arrow-back"></i>
+                    <div data-i18n="Account Settings">Go Back</div>
+                </a>
+            </li>
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Business</span>
+            </li>
+            @php
+                $slug = request()->route('slug');
+            @endphp
+            <li class="menu-item {{ request()->routeIs('business.home', $slug) ? 'active' : '' }}">
+                <a href="{{ route('business.home', $slug) }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Test</div>
+                    <div data-i18n="Account Settings">Dashboard</div>
                 </a>
             </li>
         @endif
