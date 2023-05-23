@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Contact;
 use Livewire\Component;
 use App\Models\Business;
+use App\Models\Schedule;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -73,6 +74,14 @@ class UserManageBusiness extends Component
         Contact::create([
             'business_id' => $business->id
         ]);
+
+        $days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday");
+        foreach ($days as $day) {
+            Schedule::create([
+                'business_id' => $business->id,
+                'day' => $day
+            ]);
+        }
         $this->dispatchBrowserEvent('message', ['message' => "Business is added successfully."]);
         $this->dispatchBrowserEvent('modal-close');
         $this->resetInputs();
@@ -143,9 +152,11 @@ class UserManageBusiness extends Component
 
     public function deletePermanent()
     {
-        $business = Business::where('id', $this->business_id)->with('contact')->with('address')->withTrashed()->first();
+        $business = Business::where('id', $this->business_id)->with('contact')->with('address')->with('schedules')->withTrashed()->first();
+        File::delete(public_path('images/' . $business->id));
         $business->contact->forceDelete();
         $business->address->forceDelete();
+        $business->schedules->forceDelete();
         $business->forceDelete();
         $this->dispatchBrowserEvent('message', ['message' => "Business is permanently deleted."]);
         $this->dispatchBrowserEvent('modal-close');

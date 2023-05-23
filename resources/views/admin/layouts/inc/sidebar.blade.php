@@ -102,6 +102,12 @@
                     <div data-i18n="Account Settings">Basic Information</div>
                 </a>
             </li>
+            <li class="menu-item {{ request()->routeIs('business.schedule', $slug) ? 'active' : '' }}">
+                <a href="{{ route('business.schedule', $slug) }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Weekly Schedule</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>
