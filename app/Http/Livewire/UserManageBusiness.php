@@ -143,7 +143,9 @@ class UserManageBusiness extends Component
 
     public function deletePermanent()
     {
-        $business = Business::where('id', $this->business_id)->withTrashed()->first();
+        $business = Business::where('id', $this->business_id)->with('contact')->with('address')->withTrashed()->first();
+        $business->contact->forceDelete();
+        $business->address->forceDelete();
         $business->forceDelete();
         $this->dispatchBrowserEvent('message', ['message' => "Business is permanently deleted."]);
         $this->dispatchBrowserEvent('modal-close');
