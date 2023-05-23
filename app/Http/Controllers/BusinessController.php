@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class BusinessController extends Controller
 {
-    protected $isOwner = false;
     public function manageBusinesses()
     {
         return view('admin.business.business');
@@ -19,8 +18,21 @@ class BusinessController extends Controller
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
             if ($business->creator_id == Auth::id()) {
-                $isOwner = true;
                 return view('admin.business.index');
+            } else {
+                return abort(401);
+            }
+        } else {
+            return abort(404);
+        }
+    }
+
+    public function information(string $slug)
+    {
+        $business = Business::where('slug', $slug)->where('status', 1)->first();
+        if ($business) {
+            if ($business->creator_id == Auth::id()) {
+                return view('admin.business.information');
             } else {
                 return abort(401);
             }

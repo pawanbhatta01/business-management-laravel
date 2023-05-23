@@ -96,6 +96,12 @@
                     <div data-i18n="Account Settings">Dashboard</div>
                 </a>
             </li>
+            <li class="menu-item {{ request()->routeIs('business.information', $slug) ? 'active' : '' }}">
+                <a href="{{ route('business.information', $slug) }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Basic Information</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>

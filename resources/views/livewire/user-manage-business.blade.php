@@ -2,7 +2,8 @@
     <div class="card mx-4 mt-4">
         <div class="card-header ">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#add">
+            <button type="button" wire:click='modalClose' class="btn btn-primary btn-sm float-end" data-bs-toggle="modal"
+                data-bs-target="#add">
                 Add Business
             </button>
 
@@ -13,8 +14,8 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="addLabel">Add Business</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" wire:click='modalClose' wire:click='modalClose'
+                                data-bs-dismiss="modal" wire:click='modalClose' aria-label="Close"></button>
                         </div>
                         <form wire:submit.prevent='add' enctype="multipart/form-data">
                             <div class="modal-body">
@@ -59,7 +60,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" wire:click='modalClose'
+                                    data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Add Business</button>
                             </div>
                         </form>
@@ -113,7 +115,8 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="viewLabel">View Business</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    <button type="button" class="btn-close" wire:click='modalClose'
+                                                        data-bs-dismiss="modal" wire:click='modalClose'
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -133,7 +136,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
+                                                        data-bs-dismiss="modal" wire:click='modalClose'>Close</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,7 +147,8 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="editLabel">Edit Business</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    <button type="button" class="btn-close" wire:click='modalClose'
+                                                        data-bs-dismiss="modal" wire:click='modalClose'
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <form wire:submit.prevent='edit' enctype="multipart/form-data">
@@ -205,7 +209,8 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
+                                                            data-bs-dismiss="modal"
+                                                            wire:click='modalClose'>Close</button>
                                                         <button type="submit" class="btn btn-primary">Save
                                                             changes</button>
                                                     </div>
@@ -220,7 +225,8 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="deleteLabel">Delete Business</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    <button type="button" class="btn-close" wire:click='modalClose'
+                                                        data-bs-dismiss="modal" wire:click='modalClose'
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -228,7 +234,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
+                                                        data-bs-dismiss="modal" wire:click='modalClose'>Close</button>
                                                     <button type="button" wire:click='delete'
                                                         class="btn btn-danger">Delete</button>
                                                 </div>
@@ -251,7 +257,8 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="restoreLabel">Restore Business</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    <button type="button" class="btn-close" wire:click='modalClose'
+                                                        data-bs-dismiss="modal" wire:click='modalClose'
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -259,7 +266,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
+                                                        data-bs-dismiss="modal" wire:click='modalClose'>Close</button>
                                                     <button type="button" wire:click='restore'
                                                         class="btn btn-danger">Restore</button>
                                                 </div>
@@ -274,7 +281,8 @@
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="deletePermanentLabel">
                                                         Permanently Delete Business</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    <button type="button" class="btn-close" wire:click='modalClose'
+                                                        data-bs-dismiss="modal" wire:click='modalClose'
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -282,7 +290,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
+                                                        data-bs-dismiss="modal" wire:click='modalClose'>Close</button>
                                                     <button type="button" wire:click='deletePermanent'
                                                         class="btn btn-danger">Delete</button>
                                                 </div>

@@ -28,6 +28,18 @@ class UserManageBusiness extends Component
         ];
     }
 
+    public function resetInputs()
+    {
+        $this->name = "";
+        $this->slug = "";
+        $this->owner_name = "";
+        $this->description = "";
+        $this->image = Null;
+        $this->business_id = "";
+        $this->old_image = "";
+        $this->resetErrorBag();
+    }
+
     public function updated($fields)
     {
         $this->validateOnly($fields);
@@ -35,6 +47,7 @@ class UserManageBusiness extends Component
 
     public function add()
     {
+
         $this->validate();
         $this->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
@@ -62,6 +75,7 @@ class UserManageBusiness extends Component
         ]);
         $this->dispatchBrowserEvent('message', ['message' => "Business is added successfully."]);
         $this->dispatchBrowserEvent('modal-close');
+        $this->resetInputs();
     }
 
     public function getData(int $id)
@@ -74,6 +88,11 @@ class UserManageBusiness extends Component
         $this->owner_name = $business->owner_name;
         $this->description = $business->description;
         $this->old_image = $business->image;
+    }
+
+    public function modalClose()
+    {
+        $this->resetInputs();
     }
 
     public function edit()
@@ -101,6 +120,7 @@ class UserManageBusiness extends Component
 
         $this->dispatchBrowserEvent('message', ['message' => "Business is updated successfully."]);
         $this->dispatchBrowserEvent('modal-close');
+        $this->resetInputs();
     }
 
     public function delete()
@@ -109,6 +129,7 @@ class UserManageBusiness extends Component
         $business->delete();
         $this->dispatchBrowserEvent('message', ['message' => "Business is temporarily deleted."]);
         $this->dispatchBrowserEvent('modal-close');
+        $this->resetInputs();
     }
 
     public function restore()
@@ -117,6 +138,7 @@ class UserManageBusiness extends Component
         $business->restore();
         $this->dispatchBrowserEvent('message', ['message' => "Business is restored successfully."]);
         $this->dispatchBrowserEvent('modal-close');
+        $this->resetInputs();
     }
 
     public function deletePermanent()
@@ -125,6 +147,7 @@ class UserManageBusiness extends Component
         $business->forceDelete();
         $this->dispatchBrowserEvent('message', ['message' => "Business is permanently deleted."]);
         $this->dispatchBrowserEvent('modal-close');
+        $this->resetInputs();
     }
 
     public function render()

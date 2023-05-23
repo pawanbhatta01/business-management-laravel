@@ -305,6 +305,8 @@
             $('#delete').modal('hide');
             $('#restore').modal('hide');
             $('#deletePermanent').modal('hide');
+            $('#contact').modal('hide');
+            $('#address').modal('hide');
         })
     </script>
   </body>
