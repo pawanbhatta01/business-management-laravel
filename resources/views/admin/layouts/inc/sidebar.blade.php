@@ -66,12 +66,26 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Business</span>
         </li>
-        <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
-            <a href="{{ route('manageBusinesses') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Manage Business</div>
-            </a>
-        </li>
+
+        @php
+            $routeName = Illuminate\Support\Facades\Route::current()->getName();
+            $routeName = explode('.', $routeName)[0];
+        @endphp
+        @if ($routeName == 'manageBusinesses')
+            <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
+                <a href="{{ route('manageBusinesses') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Manage Business</div>
+                </a>
+            </li>
+        @elseif($routeName == 'business')
+            <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
+                <a href="{{ route('manageBusinesses') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Test</div>
+                </a>
+            </li>
+        @endif
     </ul>
 </aside>
 <!-- / Menu -->

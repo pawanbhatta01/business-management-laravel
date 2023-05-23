@@ -25,8 +25,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('admin.index');
     })->name('dashboard');
 
-    Route::prefix('business')->group(function () {
-        Route::get('', [BusinessController::class, 'manageBusinesses'])->name('manageBusinesses');
+    Route::get('business', [BusinessController::class, 'manageBusinesses'])->name('manageBusinesses');
+
+    Route::prefix('business')->name('business.')->group(function () {
+        Route::get('{slug}/home', [BusinessController::class, 'about'])->name('home');
     });
 });
 

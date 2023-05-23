@@ -10,4 +10,9 @@ class BusinessController extends Controller
     {
         return view('admin.business.business');
     }
+
+    public function about()
+    {
+        return view('admin.business.business');
+    }
 }
