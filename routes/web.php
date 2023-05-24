@@ -31,6 +31,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('{slug}/', [BusinessController::class, 'index'])->name('home');
         Route::get('{slug}/information', [BusinessController::class, 'information'])->name('information');
         Route::get('{slug}/schedule', [BusinessController::class, 'schedule'])->name('schedule');
+        Route::get('{slug}/rating', [BusinessController::class, 'rating'])->name('rating');
     });
 });
 

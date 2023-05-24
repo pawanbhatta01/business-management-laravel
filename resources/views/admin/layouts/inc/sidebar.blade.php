@@ -108,6 +108,12 @@
                     <div data-i18n="Account Settings">Weekly Schedule</div>
                 </a>
             </li>
+            <li class="menu-item {{ request()->routeIs('business.rating', $slug) ? 'active' : '' }}">
+                <a href="{{ route('business.rating', $slug) }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Ratings</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>
