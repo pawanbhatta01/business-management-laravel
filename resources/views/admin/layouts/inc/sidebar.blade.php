@@ -114,6 +114,12 @@
                     <div data-i18n="Account Settings">Ratings</div>
                 </a>
             </li>
+            <li class="menu-item {{ request()->routeIs('business.files', $slug) ? 'active' : '' }}">
+                <a href="{{ route('business.files', $slug) }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Image Manager</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>

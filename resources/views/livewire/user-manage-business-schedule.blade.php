@@ -1,6 +1,6 @@
 <div>
     <div class="card mx-4 my-4">
-        <div class="card-body">
+        <div class="card-body table-responsive">
             <table class="table">
                 <thead>
                     <tr>
