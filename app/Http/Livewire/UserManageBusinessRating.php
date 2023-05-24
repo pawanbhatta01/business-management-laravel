@@ -26,21 +26,21 @@ class UserManageBusinessRating extends Component
     {
         $rating = Rating::where('id', $this->rating_id)->first();
         $rating->delete();
-        $this->dispatchBrowserEvent('message', ['message' => "Business is temporarily deleted."]);
+        $this->dispatchBrowserEvent('message', ['message' => "Rating is temporarily deleted."]);
         $this->dispatchBrowserEvent('modal-close');
     }
     public function restore()
     {
         $rating = Rating::where('id', $this->rating_id)->withTrashed()->first();
         $rating->restore();
-        $this->dispatchBrowserEvent('message', ['message' => "Business is restored successfully."]);
+        $this->dispatchBrowserEvent('message', ['message' => "Rating is restored successfully."]);
         $this->dispatchBrowserEvent('modal-close');
     }
     public function deletePermanent()
     {
         $rating = Rating::where('id', $this->rating_id)->withTrashed()->first();
         $rating->forceDelete();
-        $this->dispatchBrowserEvent('message', ['message' => "Business is permanently deleted ."]);
+        $this->dispatchBrowserEvent('message', ['message' => "Rating is permanently deleted ."]);
         $this->dispatchBrowserEvent('modal-close');
     }
     public function render()
