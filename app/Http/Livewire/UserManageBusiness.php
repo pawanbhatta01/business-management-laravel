@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Contact;
 use Livewire\Component;
 use App\Models\Business;
+use App\Models\BusinessPage;
 use App\Models\Schedule;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
@@ -80,6 +81,22 @@ class UserManageBusiness extends Component
             Schedule::create([
                 'business_id' => $business->id,
                 'day' => $day
+            ]);
+        }
+
+        $pages = array(
+            'Home' => 'home',
+            'About' => 'about',
+            'Services' => 'services',
+            'Gallery' => 'gallery',
+            'Contact' => 'contact',
+        );
+
+        foreach ($pages as $title => $slug) {
+            BusinessPage::create([
+                'business_id' => $business->id,
+                'title' => $title,
+                'slug' => $slug,
             ]);
         }
         $this->dispatchBrowserEvent('message', ['message' => "Business is added successfully."]);

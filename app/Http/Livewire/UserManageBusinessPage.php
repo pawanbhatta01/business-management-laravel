@@ -93,7 +93,7 @@ class UserManageBusinessPage extends Component
     }
     public function render()
     {
-        $this->pages = Page::where('business_id', $this->business_id)->withTrashed()->get();
+        $this->pages = Page::where('business_id', $this->business_id)->whereNotIn('slug', ['home', 'about', 'services', 'gallery', 'contact'])->withTrashed()->get();
         return view('livewire.user-manage-business-page', ['pages' => $this->pages]);
     }
 }

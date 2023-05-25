@@ -111,12 +111,12 @@ class BusinessController extends Controller
             return abort(404);
         }
     }
-    public function editPage($slug, $id)
+    public function editPage($slug, $page_slug)
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
             if ($business->creator_id == Auth::id()) {
-                $page = BusinessPage::find($id);
+                $page = BusinessPage::where('slug', $page_slug)->whereNotIn('slug', ['home', 'about', 'services', 'gallery', 'contact'])->first();
                 if ($page) {
                     return view('admin.business.addpage', ['slug' => $slug, 'page' => $page]);
                 } else {
@@ -166,12 +166,12 @@ class BusinessController extends Controller
             return abort(404);
         }
     }
-    public function updatePage(Request $request, $slug, $id)
+    public function updatePage(Request $request, $slug, $page_slug)
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
             if ($business->creator_id == Auth::id()) {
-                $page = BusinessPage::find($id);
+                $page = BusinessPage::where('slug', $page_slug)->whereNotIn('slug', ['home', 'about', 'services', 'gallery', 'contact'])->first();
                 if ($page) {
                     $validatedData = $request->validate([
                         'title' => 'required|string',
@@ -197,6 +197,8 @@ class BusinessController extends Controller
                     }
                     $page->update();
                     return redirect()->route('business.pages', $slug);
+                } else {
+                    return abort(404);
                 }
             } else {
                 return abort(401);

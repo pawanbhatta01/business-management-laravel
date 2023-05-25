@@ -28,7 +28,7 @@
                                         View
                                     </button>
                                     <a name="" id="" class="btn btn-primary btn-sm"
-                                        href="{{ route('business.edit-page', ['slug' => $business_slug, 'id' => $page->id]) }}"
+                                        href="{{ route('business.edit-page', ['slug' => $business_slug, 'page_slug' => $page->slug]) }}"
                                         role="button">Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#delete" wire:click='getData({{ $page->id }})'>
