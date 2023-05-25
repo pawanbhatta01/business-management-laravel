@@ -120,6 +120,13 @@
                     <div data-i18n="Account Settings">Image Manager</div>
                 </a>
             </li>
+            <li
+                class="menu-item {{ request()->routeIs('business.pages', $slug) || request()->routeIs('business.add-page', $slug) ? 'active' : '' }}">
+                <a href="{{ route('business.pages', $slug) }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Pages</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>

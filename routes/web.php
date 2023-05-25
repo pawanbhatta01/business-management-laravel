@@ -33,6 +33,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('{slug}/schedule', [BusinessController::class, 'schedule'])->name('schedule');
         Route::get('{slug}/rating', [BusinessController::class, 'rating'])->name('rating');
         Route::get('{slug}/files', [BusinessController::class, 'files'])->name('files');
+        Route::get('{slug}/pages', [BusinessController::class, 'pages'])->name('pages');
+        Route::get('{slug}/add-page', [BusinessController::class, 'addPage'])->name('add-page');
+        Route::post('{slug}/add-page', [BusinessController::class, 'storePage'])->name('store-page');
+        Route::get('{slug}/edit-page/{id}', [BusinessController::class, 'editPage'])->name('edit-page');
+        Route::post('{slug}/edit-page/{id}', [BusinessController::class, 'updatePage'])->name('update-page');
     });
 });
 

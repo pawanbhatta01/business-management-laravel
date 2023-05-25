@@ -63,6 +63,12 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('admin-assets/assets/js/config.js') }}"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+    <script src="https://cdn.tiny.cloud/1/3lhaesa1sxd95znop61s5qdv5v9wc4xqalu2p9m54oge907q/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
     @livewireStyles
   </head>
 
@@ -309,5 +315,14 @@
             $('#address').modal('hide');
         })
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
+  @yield('custom-js')
+    
   </body>
 </html>
