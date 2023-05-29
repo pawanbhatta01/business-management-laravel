@@ -25,6 +25,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::prefix('manage')->middleware('auth')->name('admin.')->group(function () {
         Route::get('', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('users', [AdminController::class, 'users'])->name('users');
     });
 
     Route::get('', [BusinessController::class, 'dashboard'])->name('dashboard')->middleware('auth');

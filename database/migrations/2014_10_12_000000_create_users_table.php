@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('role')->default(1)->comment('0: Admin , 1: Business Person');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -142,6 +142,12 @@
                     <div data-i18n="Analytics">Dashboard</div>
                 </a>
             </li>
+            <li class="menu-item {{ request()->routeIs('admin.users') ? 'active' : '' }}">
+                <a href="{{ route('admin.users') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="Analytics">Users</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>
