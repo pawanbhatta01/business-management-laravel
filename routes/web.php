@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BusinessController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,13 +22,14 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('', function () {
-        return view('admin.index');
-    })->name('dashboard');
 
-    Route::get('business', [BusinessController::class, 'manageBusinesses'])->name('manageBusinesses');
+    Route::prefix('manage')->middleware('auth')->name('admin.')->group(function () {
+        Route::get('', [AdminController::class, 'index'])->name('dashboard');
+    });
 
-    Route::prefix('business')->name('business.')->group(function () {
+    Route::get('', [BusinessController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+    Route::get('business', [BusinessController::class, 'manageBusinesses'])->name('manageBusinesses')->middleware('auth');
+    Route::prefix('business')->middleware('auth')->name('business.')->group(function () {
         Route::get('{slug}/', [BusinessController::class, 'index'])->name('home');
         Route::get('{slug}/information', [BusinessController::class, 'information'])->name('information');
         Route::get('{slug}/schedule', [BusinessController::class, 'schedule'])->name('schedule');

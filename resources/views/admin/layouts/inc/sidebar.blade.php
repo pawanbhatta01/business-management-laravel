@@ -56,81 +56,90 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        @php
-            $routeName = Illuminate\Support\Facades\Route::current()->getName();
-            $routeName = explode('.', $routeName)[0];
-        @endphp
-        @if ($routeName == 'manageBusinesses' || $routeName == 'dashboard')
-            <!-- Dashboard -->
-            <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}" class="menu-link">
+        @if (Auth::user()->role == 1)
+            @php
+                $routeName = Illuminate\Support\Facades\Route::current()->getName();
+                $routeName = explode('.', $routeName)[0];
+            @endphp
+            @if ($routeName == 'manageBusinesses' || $routeName == 'dashboard')
+                <!-- Dashboard -->
+                <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                        <div data-i18n="Analytics">Dashboard</div>
+                    </a>
+                </li>
+                <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">Business</span>
+                </li>
+                <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
+                    <a href="{{ route('manageBusinesses') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Manage Business</div>
+                    </a>
+                </li>
+            @elseif($routeName == 'business')
+                <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
+                    <a href="{{ route('manageBusinesses') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-arrow-back"></i>
+                        <div data-i18n="Account Settings">Go Back</div>
+                    </a>
+                </li>
+                <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">Business</span>
+                </li>
+                @php
+                    $slug = request()->route('slug');
+                @endphp
+                <li class="menu-item {{ request()->routeIs('business.home', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.home', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Dashboard</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('business.information', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.information', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Basic Information</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('business.schedule', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.schedule', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Weekly Schedule</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('business.rating', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.rating', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Ratings</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('business.files', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.files', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Image Manager</div>
+                    </a>
+                </li>
+                <li
+                    class="menu-item {{ request()->routeIs('business.pages', $slug) || request()->routeIs('business.add-page', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.pages', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Pages</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->routeIs('business.menus', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.menus', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Menus</div>
+                    </a>
+                </li>
+            @endif
+        @else
+            <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.dashboard') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Dashboard</div>
-                </a>
-            </li>
-            <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Business</span>
-            </li>
-            <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
-                <a href="{{ route('manageBusinesses') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Manage Business</div>
-                </a>
-            </li>
-        @elseif($routeName == 'business')
-            <li class="menu-item {{ request()->routeIs('manageBusinesses') ? 'active' : '' }}">
-                <a href="{{ route('manageBusinesses') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-arrow-back"></i>
-                    <div data-i18n="Account Settings">Go Back</div>
-                </a>
-            </li>
-            <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Business</span>
-            </li>
-            @php
-                $slug = request()->route('slug');
-            @endphp
-            <li class="menu-item {{ request()->routeIs('business.home', $slug) ? 'active' : '' }}">
-                <a href="{{ route('business.home', $slug) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Dashboard</div>
-                </a>
-            </li>
-            <li class="menu-item {{ request()->routeIs('business.information', $slug) ? 'active' : '' }}">
-                <a href="{{ route('business.information', $slug) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Basic Information</div>
-                </a>
-            </li>
-            <li class="menu-item {{ request()->routeIs('business.schedule', $slug) ? 'active' : '' }}">
-                <a href="{{ route('business.schedule', $slug) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Weekly Schedule</div>
-                </a>
-            </li>
-            <li class="menu-item {{ request()->routeIs('business.rating', $slug) ? 'active' : '' }}">
-                <a href="{{ route('business.rating', $slug) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Ratings</div>
-                </a>
-            </li>
-            <li class="menu-item {{ request()->routeIs('business.files', $slug) ? 'active' : '' }}">
-                <a href="{{ route('business.files', $slug) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Image Manager</div>
-                </a>
-            </li>
-            <li
-                class="menu-item {{ request()->routeIs('business.pages', $slug) || request()->routeIs('business.add-page', $slug) ? 'active' : '' }}">
-                <a href="{{ route('business.pages', $slug) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Pages</div>
-                </a>
-            </li>
-            <li class="menu-item {{ request()->routeIs('business.menus', $slug) ? 'active' : '' }}">
-                <a href="{{ route('business.menus', $slug) }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                    <div data-i18n="Account Settings">Menus</div>
                 </a>
             </li>
         @endif

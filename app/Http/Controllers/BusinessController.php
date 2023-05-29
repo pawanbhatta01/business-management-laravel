@@ -12,14 +12,28 @@ class BusinessController extends Controller
 {
     public function manageBusinesses()
     {
-        return view('admin.business.business');
+        if (Auth::user()->role == 1) {
+            return view('admin.business.business');
+        } else {
+            return abort(401);
+        }
+    }
+    public function dashboard()
+    {
+        if (Auth::user()->role == 1) {
+            return view('admin.index');
+        } elseif (Auth::user()->role == 0) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return abort(401);
+        }
     }
 
     public function index(string $slug)
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.index');
             } else {
                 return abort(401);
@@ -33,7 +47,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.information');
             } else {
                 return abort(401);
@@ -47,7 +61,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.schedules');
             } else {
                 return abort(401);
@@ -61,7 +75,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.rating');
             } else {
                 return abort(401);
@@ -75,7 +89,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.file');
             } else {
                 return abort(401);
@@ -88,7 +102,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.page');
             } else {
                 return abort(401);
@@ -102,7 +116,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.addpage', ['slug' => $slug]);
             } else {
                 return abort(401);
@@ -115,7 +129,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 $page = BusinessPage::where('slug', $page_slug)->whereNotIn('slug', ['home', 'about', 'services', 'gallery', 'contact'])->first();
                 if ($page) {
                     return view('admin.business.addpage', ['slug' => $slug, 'page' => $page]);
@@ -134,7 +148,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 $page = new BusinessPage;
                 $validatedData = $request->validate([
                     'title' => 'required|string',
@@ -170,7 +184,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 $page = BusinessPage::where('slug', $page_slug)->whereNotIn('slug', ['home', 'about', 'services', 'gallery', 'contact'])->first();
                 if ($page) {
                     $validatedData = $request->validate([
@@ -212,7 +226,7 @@ class BusinessController extends Controller
     {
         $business = Business::where('slug', $slug)->where('status', 1)->first();
         if ($business) {
-            if ($business->creator_id == Auth::id()) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
                 return view('admin.business.menus', ['slug' => $slug]);
             } else {
                 return abort(401);
