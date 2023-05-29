@@ -36,8 +36,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('{slug}/pages', [BusinessController::class, 'pages'])->name('pages');
         Route::get('{slug}/add-page', [BusinessController::class, 'addPage'])->name('add-page');
         Route::post('{slug}/add-page', [BusinessController::class, 'storePage'])->name('store-page');
-        Route::get('{slug}/edit-page/{id}', [BusinessController::class, 'editPage'])->name('edit-page');
+        Route::get('{slug}/edit-page/{page_slug}', [BusinessController::class, 'editPage'])->name('edit-page');
         Route::post('{slug}/edit-page/{id}', [BusinessController::class, 'updatePage'])->name('update-page');
+        Route::get('{slug}/menus', [BusinessController::class, 'menus'])->name('menus');
     });
 });
 

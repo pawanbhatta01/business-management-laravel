@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('page_id')->nullable();
+            $table->foreignId('business_id')->nullable();
+            $table->foreignId('order')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

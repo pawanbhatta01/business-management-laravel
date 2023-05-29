@@ -12,7 +12,7 @@ class UserManageBusinessImage extends Component
 {
     use WithFileUploads;
     protected $images;
-    public $business_id,$name,$image,$image_id,$oldImage;
+    public $business_id, $name, $image, $image_id, $oldImage;
 
     protected function rules()
     {
@@ -26,6 +26,11 @@ class UserManageBusinessImage extends Component
         $this->validateOnly($fields);
     }
 
+    public function modalClose()
+    {
+        $this->resetInput();
+    }
+
     public function mount(string $slug)
     {
         $business = Business::where('slug', $slug)->first();
@@ -35,7 +40,7 @@ class UserManageBusinessImage extends Component
     public function getData(int $id)
     {
         $this->image_id = $id;
-        $image = FileModel::where('id',$id)->withTrashed()->first();
+        $image = FileModel::where('id', $id)->withTrashed()->first();
         $this->name = $image->name;
         $this->oldImage = $image->link;
     }
@@ -62,7 +67,6 @@ class UserManageBusinessImage extends Component
 
         $this->dispatchBrowserEvent('message', ['message' => "Image is updated successfully."]);
         $this->dispatchBrowserEvent('modal-close');
-
     }
     public function resetInput()
     {
@@ -70,7 +74,6 @@ class UserManageBusinessImage extends Component
         $this->image = Null;
         $this->image_id = "";
         $this->resetErrorBag();
-
     }
 
     public function add()
