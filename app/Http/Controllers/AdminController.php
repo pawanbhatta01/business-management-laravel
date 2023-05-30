@@ -15,4 +15,9 @@ class AdminController extends Controller
     {
         return view('admin.admin.users');
     }
+
+    public function business()
+    {
+        return view('admin.admin.business');
+    }
 }

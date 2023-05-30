@@ -42,6 +42,10 @@ class Business extends Model
         return $this->hasMany(Rating::class, 'business_id');
     }
 
+    public function pages()
+    {
+        return $this->hasMany(BusinessPage::class, 'business_id');
+    }
     public function menus()
     {
         return $this->hasMany(Menu::class, 'business_id');

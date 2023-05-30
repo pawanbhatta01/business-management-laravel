@@ -26,6 +26,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::prefix('manage')->middleware('auth')->name('admin.')->group(function () {
         Route::get('', [AdminController::class, 'index'])->name('dashboard');
         Route::get('users', [AdminController::class, 'users'])->name('users');
+        Route::get('business', [AdminController::class, 'business'])->name('business');
     });
 
     Route::get('', [BusinessController::class, 'dashboard'])->name('dashboard')->middleware('auth');
@@ -46,5 +47,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 Auth::routes();
+
+Route::get('login', function () {
+    return redirect('/');
+})->name('login');
+Route::get('register', function () {
+    return redirect('/');
+})->name('register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

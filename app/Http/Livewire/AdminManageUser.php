@@ -17,7 +17,9 @@ class AdminManageUser extends Component
 
     public function delete()
     {
-        $user = User::find($this->user_id);
+        $user = User::where('id', $this->user_id)->with('business')->first();
+        foreach ($user->business as $business)
+            $business->delete();
         $user->delete();
         $this->dispatchBrowserEvent('message', ['message' => "User is temporarily deleted."]);
         $this->dispatchBrowserEvent('modal-close');
