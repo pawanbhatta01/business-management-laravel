@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Route::prefix('admin')->middleware('auth')->group(function () {
@@ -48,11 +49,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 Auth::routes();
 
-Route::get('login', function () {
-    return redirect('/');
-})->name('login');
-Route::get('register', function () {
-    return redirect('/');
-})->name('register');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('', [FrontendController::class, 'index'])->name('frontend.home');
+Route::get('business', [FrontendController::class, 'businessSearch'])->name('frontend.business.search');
+Route::get('business/{slug}', [FrontendController::class, 'business'])->name('frontend.business');

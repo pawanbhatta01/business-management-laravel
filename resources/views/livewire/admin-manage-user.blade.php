@@ -133,7 +133,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <th class="text-center" colspan="5" scope="row">No Users Found</th>
+                            <th class="text-center" colspan="6" scope="row">No Users Found</th>
                         </tr>
                     @endforelse
 
