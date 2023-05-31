@@ -208,7 +208,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="sec-heading center">
                         <h2>Featured</h2>
-                        <h3>Top Rated <span class="theme-cl">Places</span></h3>
+                        <h3>Latest <span class="theme-cl">Places</span></h3>
                     </div>
                 </div>
             </div>
