@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>@yield('title') | Business Management App</title>
+    <title>@yield('title') | Mero Business</title>
 
     <!-- All Plugins Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
@@ -43,8 +43,10 @@
                 <nav id="navigation" class="navigation navigation-landscape">
                     <div class="nav-header">
                         <a class="nav-brand" href="#">
-                            <img src="assets/img/logo-light.png" class="logo hd-992" alt="" />
-                            <img src="assets/img/logo.png" class="logo sw-m" alt="" />
+                            {{-- <img src="assets/img/logo-light.png" class="logo hd-992" alt="" />
+                            <img src="assets/img/logo.png" class="logo sw-m" alt="" /> --}}
+                            <span style="color: red; font-weight:bold;">Mero</span><span
+                                style="color: blue; ">Business</span>
                         </a>
                         <div class="nav-toggle"></div>
                     </div>

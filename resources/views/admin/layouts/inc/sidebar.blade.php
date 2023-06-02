@@ -134,6 +134,12 @@
                         <div data-i18n="Account Settings">Menus</div>
                     </a>
                 </li>
+                <li class="menu-item {{ request()->routeIs('business.services', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.services', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">Services</div>
+                    </a>
+                </li>
             @endif
         @else
             <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">

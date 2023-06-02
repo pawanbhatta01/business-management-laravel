@@ -55,4 +55,9 @@ class Business extends Model
     {
         return $this->hasMany(FileManager::class, 'business_id');
     }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class, 'business_id');
+    }
 }

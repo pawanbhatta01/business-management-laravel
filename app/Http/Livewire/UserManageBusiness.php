@@ -7,6 +7,7 @@ use App\Models\Contact;
 use Livewire\Component;
 use App\Models\Business;
 use App\Models\BusinessPage;
+use App\Models\BusinessSiteConfig;
 use App\Models\Schedule;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
@@ -76,11 +77,20 @@ class UserManageBusiness extends Component
             'business_id' => $business->id
         ]);
 
-        $days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday");
+        $days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
         foreach ($days as $day) {
             Schedule::create([
                 'business_id' => $business->id,
                 'day' => $day
+            ]);
+        }
+
+        $keys = array("facebook", "instagram", "instagram", "linkedin", "website");
+
+        foreach ($keys as $key) {
+            BusinessSiteConfig::create([
+                'key' => $key,
+                'business_id' => $business->id
             ]);
         }
 

@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('{slug}/edit-page/{page_slug}', [BusinessController::class, 'editPage'])->name('edit-page');
         Route::post('{slug}/edit-page/{id}', [BusinessController::class, 'updatePage'])->name('update-page');
         Route::get('{slug}/menus', [BusinessController::class, 'menus'])->name('menus');
+        Route::get('{slug}/services', [BusinessController::class, 'services'])->name('services');
     });
 });
 

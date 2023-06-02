@@ -33,7 +33,13 @@
                 <!-- reviews-comments-item -->
                 <div class="reviews-comments-item">
                     <div class="review-comments-avatar">
+                        @php
+                            $name = $rating->user->name;
+                            $name = explode(' ', $name);
+                            $name = strtoupper(substr($name[0], 0, 1) . substr($name[1], 0, 1));
+                        @endphp
                         <img src="https://via.placeholder.com/400x400" class="img-fluid" alt="">
+
                     </div>
                     <div class="reviews-comments-item-text">
                         <h4 style="display: flex;"><a href="#">{{ $rating->user->name }}</a><span
@@ -52,9 +58,9 @@
                         </div>
                         <div class="clearfix"></div>
                         <p>" {{ $rating->comment }} "</p>
-                        <div class="pull-left reviews-reaction">
+                        {{-- <div class="pull-left reviews-reaction">
                             <a href="#" class="comment-love active"><i class="ti-heart"></i> 07</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!--reviews-comments-item end-->
