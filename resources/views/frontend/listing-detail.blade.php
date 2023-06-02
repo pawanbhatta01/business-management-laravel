@@ -86,18 +86,9 @@
 
                         <div class="Reveal-block-body">
                             <ul class="avl-features third">
-                                <li>Air Conditioning</li>
-                                <li>Swimming Pool</li>
-                                <li>Central Heating</li>
-                                <li>Laundry Room</li>
-                                <li>Gym</li>
-                                <li>Alarm</li>
-                                <li>Window Covering</li>
-                                <li>Internet</li>
-                                <li>Pets Allow</li>
-                                <li>Free WiFi</li>
-                                <li>Car Parking</li>
-                                <li>Spa & Massage</li>
+                                @foreach ($business->services as $service)
+                                    <li>{{ $service->title }}</li>
+                                @endforeach
                             </ul>
                         </div>
 
@@ -140,29 +131,32 @@
                         <!-- Agent Detail -->
                         <div class="Reveal-side-widget form-submit">
                             <div class="Reveal-Reveal-side-widget-header dark green">
-                                <div class="Reveal-thumb-photo"><img src="https://via.placeholder.com/400x400"
-                                        alt=""></div>
+                                <div class="Reveal-thumb-photo">
+                                    @if ($business->creator->image)
+                                        <img src="{{ asset('images/' . $business->creator->image) }}"
+                                            style="width: 60px; height:60px;background-color: rgb(222, 219, 219);margin-top:0.6rem; border-radius:50%; object-fit:cover" />
+                                    @else
+                                        @php
+                                            $name = Auth::user()->name;
+                                            $name = explode(' ', $name);
+                                            $name = strtoupper(substr($name[0], 0, 1) . substr($name[1], 0, 1));
+                                        @endphp
+                                        <div style="width: 60px; height:60px;background-color: rgb(222, 219, 219);margin-top:0.6rem; border-radius:50%; text-align:center; line-height:60px;"
+                                            style="">
+                                            {{ $name }}</div>
+                                    @endif
+                                    {{-- <img src="https://via.placeholder.com/400x400" alt=""> --}}
+                                </div>
                                 <div class="Reveal-thumb-details">
-                                    <h4>Shaurya Preet</h4>
-                                    <span>202 Listings</span>
+                                    <h4>{{ $business->creator->name }}</h4>
+                                    @php
+                                        $count = \App\Models\Business::where('creator_id', $business->creator->id)->count();
+                                    @endphp
+                                    <span>{{ $count }} Listings</span>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="Reveal-Reveal-side-widget-body">
-                                <div class="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" class="form-control" placeholder="Your Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control" placeholder="Your Email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Message</label>
-                                    <textarea class="form-control" placeholder="Send Message to author..."></textarea>
-                                </div>
-                                <button class="btn btn-theme full-width">Send Message</button>
-                            </div>
+                            <livewire:home-message-home :slug="$business->slug">
                         </div>
                         @php
                             date_default_timezone_set('Asia/Kathmandu');

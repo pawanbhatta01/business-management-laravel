@@ -33,12 +33,19 @@
                 <!-- reviews-comments-item -->
                 <div class="reviews-comments-item">
                     <div class="review-comments-avatar">
-                        @php
-                            $name = $rating->user->name;
-                            $name = explode(' ', $name);
-                            $name = strtoupper(substr($name[0], 0, 1) . substr($name[1], 0, 1));
-                        @endphp
-                        <img src="https://via.placeholder.com/400x400" class="img-fluid" alt="">
+                        @if ($rating->user->image)
+                            <img src="{{ asset('images/' . $rating->user->image) }}"
+                                style="width: 70; height:80;background-color: rgb(222, 219, 219); border-radius:50%; object-fit:cover" />
+                        @else
+                            @php
+                                $name = Auth::user()->name;
+                                $name = explode(' ', $name);
+                                $name = strtoupper(substr($name[0], 0, 1) . substr($name[1], 0, 1));
+                            @endphp
+                            <div style="width: 70; height:80px;background-color: rgb(222, 219, 219); border-radius:50%; text-align:center; line-height:80px;"
+                                style="">
+                                {{ $name }}</div>
+                        @endif
 
                     </div>
                     <div class="reviews-comments-item-text">
