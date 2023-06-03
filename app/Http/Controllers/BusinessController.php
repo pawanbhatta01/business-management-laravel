@@ -249,4 +249,18 @@ class BusinessController extends Controller
             return abort(404);
         }
     }
+
+    public function contacts(string $slug)
+    {
+        $business = Business::where('slug', $slug)->where('status', 1)->first();
+        if ($business) {
+            if ($business->creator_id == Auth::id() && Auth::user()->role == 1) {
+                return view('admin.business.contacts', ['slug' => $slug]);
+            } else {
+                return abort(401);
+            }
+        } else {
+            return abort(404);
+        }
+    }
 }
