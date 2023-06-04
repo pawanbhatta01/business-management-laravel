@@ -57,4 +57,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('', [FrontendController::class, 'index'])->name('frontend.home');
 Route::get('business', [FrontendController::class, 'businessSearch'])->name('frontend.business.search');
-Route::get('business/{slug}', [FrontendController::class, 'business'])->name('frontend.business');
+Route::prefix('business')->name('frontend.business.')->group(function () {
+    Route::get('{slug}', [FrontendController::class, 'home'])->name('index');
+    Route::get('{slug}/about', [FrontendController::class, 'about'])->name('about');
+});

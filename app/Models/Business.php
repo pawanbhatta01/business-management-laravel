@@ -60,4 +60,13 @@ class Business extends Model
     {
         return $this->hasMany(Service::class, 'business_id');
     }
+
+    public function contacts()
+    {
+        return $this->hasMany(BusinessContact::class, 'business_id');
+    }
+    public function settings()
+    {
+        return $this->hasMany(BusinessSiteConfig::class, 'business_id');
+    }
 }

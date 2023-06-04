@@ -24,14 +24,14 @@
                     <div class="list-badge now-open">{{ $status }}</div>
                     <div class="Reveal-grid-thumb">
 
-                        <a href="{{ route('frontend.business', $business->slug) }}" class="lup-box"><img height="800"
-                                width="100%" style="object-fit: cover;" src="{{ asset('images/' . $business->image) }}"
-                                class="img-fluid" alt="" /></a>
+                        <a href="{{ route('frontend.business.index', $business->slug) }}" class="lup-box"><img
+                                width="100%" style="object-fit: cover; height:250px !important;"
+                                src="{{ asset('images/' . $business->image) }}" class="img-fluid" alt="" /></a>
                     </div>
                     <div class="Reveal-grid-caption">
                         <div class="Reveal-grid-caption-header">
                             <h4 class="Reveal-header-title"><a
-                                    href="{{ route('frontend.business', $business->slug) }}">{{ $business->name }}</a>
+                                    href="{{ route('frontend.business.index', $business->slug) }}">{{ $business->name }}</a>
                             </h4>
                             @php
                                 $i = 0;
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="Reveal-grid-footer-last">
-                            <a href="{{ route('frontend.business', $business->slug) }}"
+                            <a href="{{ route('frontend.business.index', $business->slug) }}"
                                 class="Reveal-view-btn">View</a>
                         </div>
                     </div>

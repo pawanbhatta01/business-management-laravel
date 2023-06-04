@@ -27,6 +27,6 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <button class="btn btn-theme full-width" wire:click='send'>Send Message</button>
+        <button class="btn btn-theme full-width text-white" wire:click='send'>Send Message</button>
     </div>
 </div>

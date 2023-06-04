@@ -17,11 +17,20 @@ class FrontendController extends Controller
         return $request->q;
     }
 
-    public function business(string $slug)
+    public function home(string $slug)
     {
         $business = Business::where('slug', $slug)->with('address')->with('contact')->with('ratings')->first();
         if ($business) {
             return view('frontend.listing-detail', compact('business'));
+        } else {
+            return abort(404);
+        }
+    }
+    public function about(string $slug)
+    {
+        $business = Business::where('slug', $slug)->with('address')->with('contact')->with('ratings')->first();
+        if ($business) {
+            return view('frontend.about', compact('business'));
         } else {
             return abort(404);
         }

@@ -55,7 +55,9 @@
         </div>
     </section>
     <!-- ================================ End Banner ========================================= -->
-
+    <div class="container">
+        @include('layouts.businessnavbar')
+    </div>
     <!-- ============================ Property Detail Start ================================== -->
     <section class="gray">
         <div class="container">
@@ -137,7 +139,7 @@
                                             style="width: 60px; height:60px;background-color: rgb(222, 219, 219);margin-top:0.6rem; border-radius:50%; object-fit:cover" />
                                     @else
                                         @php
-                                            $name = Auth::user()->name;
+                                            $name = $business->creator->name;
                                             $name = explode(' ', $name);
                                             $name = strtoupper(substr($name[0], 0, 1) . substr($name[1], 0, 1));
                                         @endphp
@@ -214,13 +216,30 @@
                             <div class="imp-boxes-single">
                                 <div class="imp-boxes-single-icon"><img src="{{ asset('assets/img/share.svg') }}"
                                         width="25" alt="" /></div>
+                                @php
+                                    function getValue(string $key, $business)
+                                    {
+                                        $data = \App\Models\BusinessSiteConfig::where('business_id', $business->id)
+                                            ->where('key', $key)
+                                            ->first();
+                                        return $data->value;
+                                    }
+                                @endphp
                                 <div class="imp-boxes-single-content">
                                     <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                        <li><a href="#"><i class="ti-google"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                        <li>
+                                            <a href="{{ getValue('facebook', $business) }}"><i class="ti-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ getValue('linkedin', $business) }}"><i class="ti-linkedin"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ getValue('instagram', $business) }}"><i
+                                                    class="ti-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ getValue('youtube', $business) }}"><i class="ti-youtube"></i></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -277,12 +296,12 @@
 
                                     <li>
                                         <div class="Reveal-service-icon">
-                                            <a href="#">
+                                            <a href="{{ getValue('website', $business) }}">
                                                 <div class="Reveal-icon-box-round">
                                                     <i class="lni-world"></i>
                                                 </div>
                                                 <div class="Reveal-icon-box-text">
-                                                    www.myfinding.com
+                                                    {{ getValue('website', $business) }}
                                                 </div>
                                             </a>
                                         </div>
