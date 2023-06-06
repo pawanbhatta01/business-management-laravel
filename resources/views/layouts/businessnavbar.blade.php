@@ -15,14 +15,20 @@
                     <a class="nav-link {{ request()->routeIs('frontend.business.about', $business->slug) ? 'active' : '' }}"
                         aria-current="page" href="{{ route('frontend.business.about', $business->slug) }}">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Services</a>
+                <li
+                    class="nav-item {{ request()->routeIs('frontend.business.services', $business->slug) ? 'active' : '' }}">
+                    <a class="nav-link" aria-current="page"
+                        href="{{ route('frontend.business.services', $business->slug) }}">Services</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Gallery</a>
+                <li
+                    class="nav-item {{ request()->routeIs('frontend.business.gallery', $business->slug) ? 'active' : '' }}">
+                    <a class="nav-link" aria-current="page"
+                        href="{{ route('frontend.business.gallery', $business->slug) }}">Gallery</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Contact</a>
+                <li
+                    class="nav-item {{ request()->routeIs('frontend.business.contact', $business->slug) ? 'active' : '' }}">
+                    <a class="nav-link" aria-current="page"
+                        href="{{ route('frontend.business.contact', $business->slug) }}">Contact</a>
                 </li>
                 @if (count($business->menus))
                     <div class="dropdown nav-item">

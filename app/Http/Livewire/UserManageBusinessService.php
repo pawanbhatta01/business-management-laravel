@@ -16,7 +16,7 @@ class UserManageBusinessService extends Component
     {
         return [
             'title' => 'required|max:20',
-            'description' => 'required|min:200'
+            'description' => 'required|min:100'
         ];
     }
 

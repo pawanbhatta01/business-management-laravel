@@ -60,4 +60,7 @@ Route::get('business', [FrontendController::class, 'businessSearch'])->name('fro
 Route::prefix('business')->name('frontend.business.')->group(function () {
     Route::get('{slug}', [FrontendController::class, 'home'])->name('index');
     Route::get('{slug}/about', [FrontendController::class, 'about'])->name('about');
+    Route::get('{slug}/services', [FrontendController::class, 'services'])->name('services');
+    Route::get('{slug}/gallery', [FrontendController::class, 'gallery'])->name('gallery');
+    Route::get('{slug}/contact', [FrontendController::class, 'contact'])->name('contact');
 });
