@@ -38,7 +38,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             @foreach ($business->menus as $menu)
-                                <li><a class="dropdown-item" href="">{{ $menu->page->title }}</a>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('frontend.business.pages', ['slug' => $business->slug, 'page_slug' => $menu->page->slug]) }}">{{ $menu->page->title }}</a>
                                 </li>
                             @endforeach
                         </ul>

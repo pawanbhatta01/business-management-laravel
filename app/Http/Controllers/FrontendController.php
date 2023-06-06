@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Business;
+use App\Models\BusinessPage;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -58,6 +59,16 @@ class FrontendController extends Controller
         $business = Business::where('slug', $slug)->with('address')->with('contact')->with('ratings')->first();
         if ($business) {
             return view('frontend.business.contact', compact('business'));
+        } else {
+            return abort(404);
+        }
+    }
+    public function pages(string $slug, string $page_slug)
+    {
+        $business = Business::where('slug', $slug)->with('address')->with('contact')->with('ratings')->first();
+        if ($business) {
+            $page = BusinessPage::where('slug', $page_slug)->where('business_id', $business->id)->first();
+            return view('frontend.business.page', compact('business', 'page'));
         } else {
             return abort(404);
         }

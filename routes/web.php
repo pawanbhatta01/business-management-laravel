@@ -42,7 +42,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('{slug}/add-page', [BusinessController::class, 'addPage'])->name('add-page');
         Route::post('{slug}/add-page', [BusinessController::class, 'storePage'])->name('store-page');
         Route::get('{slug}/edit-page/{page_slug}', [BusinessController::class, 'editPage'])->name('edit-page');
-        Route::post('{slug}/edit-page/{id}', [BusinessController::class, 'updatePage'])->name('update-page');
+        Route::post('{slug}/edit-page/{page_slug}', [BusinessController::class, 'updatePage'])->name('update-page');
         Route::get('{slug}/menus', [BusinessController::class, 'menus'])->name('menus');
         Route::get('{slug}/services', [BusinessController::class, 'services'])->name('services');
         Route::get('{slug}/contacts', [BusinessController::class, 'contacts'])->name('contacts');
@@ -63,4 +63,5 @@ Route::prefix('business')->name('frontend.business.')->group(function () {
     Route::get('{slug}/services', [FrontendController::class, 'services'])->name('services');
     Route::get('{slug}/gallery', [FrontendController::class, 'gallery'])->name('gallery');
     Route::get('{slug}/contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::get('{slug}/pages/{page_slug}', [FrontendController::class, 'pages'])->name('pages');
 });

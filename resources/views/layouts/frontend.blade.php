@@ -24,7 +24,7 @@
     <style>
         a {
             text-decoration: none !important;
-            color: black !important;
+            color: black;
         }
     </style>
 

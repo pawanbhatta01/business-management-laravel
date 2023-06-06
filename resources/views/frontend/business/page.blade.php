@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-    Contact
+    Gallery
 @endsection
 
 @section('content')
@@ -52,56 +52,9 @@
     <div class="container">
         @include('layouts.businessnavbar')
     </div>
-
-    <section class="gray">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="contact-box">
-                        <i class="ti-email theme-cl"></i>
-                        <h4>Email</h4>
-                        <p>{{ $business->contact->email }}</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="contact-box">
-                        <i class="ti-location-pin theme-cl"></i>
-                        <h4>Address</h4>
-                        <p>{{ $business->address->street }}</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="contact-box">
-                        <i class="ti-comment-alt theme-cl"></i>
-                        <h4>Contact number</h4>
-                        <p>{{ $business->contact->mobile }}</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- row Start -->
-            <div class="row">
-
-                <livewire:send-message :business="$business" />
-                <div class="col-lg-5 col-md-5">
-                    <div class="contact-info-map">
-                        <iframe
-                            src="https://maps.google.com/maps?q={{ $business->address->city }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                            width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""
-                            aria-hidden="false" tabindex="0"></iframe>
-                    </div>
-                </div>
-
-            </div>
-            <!-- /row -->
-
-        </div>
-
-    </section>
+    <div class="container my-4">
+        @php
+            echo $page->content;
+        @endphp
+    </div>
 @endsection

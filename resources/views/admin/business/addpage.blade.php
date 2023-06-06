@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
             <form method="POST" enctype="multipart/form-data"
-                @if (isset($page)) action="{{ route('business.update-page', ['slug' => $slug, 'id' => $page->id]) }}" @else  action="{{ route('business.store-page', $slug) }}" @endif>
+                @if (isset($page)) action="{{ route('business.update-page', ['slug' => $slug, 'page_slug' => $page->slug]) }}" @else  action="{{ route('business.store-page', $slug) }}" @endif>
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Title</label>
