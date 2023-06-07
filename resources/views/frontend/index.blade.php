@@ -5,38 +5,61 @@
 @endsection
 
 @section('content')
-    <!-- ============================ Hero Banner  Start================================== -->
     <div class="image-cover hero-banner" style="background:url(https://via.placeholder.com/1920x900) no-repeat;"
         data-overlay="6">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
 
-                    <h1 class="big-header-capt capti">Discover Business</h1>
+                    <h1 class="big-header-capt capti">Discover Your City</h1>
                     <div class="full-search-2 Reveal-search Reveal-search-radius box-style">
                         <div class="Reveal-search-content">
 
-                            <form action="{{ route('frontend.business.search') }}" method="get">
-                                <div class="row">
+                            <div class="row">
 
-                                    <div class="col-lg-10 col-md-10 col-sm-12 br-left-p">
-                                        <div class="form-group">
-                                            <div class="input-with-icon">
-                                                <input type="text" class="form-control" name="q"
-                                                    placeholder="Keywords...">
-                                                <i class="theme-cl ti-search"></i>
-                                            </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 br-left-p">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="text" class="form-control" placeholder="Keywords...">
+                                            <i class="theme-cl ti-search"></i>
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-2 col-md-2 col-sm-12">
-                                        <div class="form-group">
-                                            <button type="submit" class="btn search-btn">Search</button>
-                                        </div>
-                                    </div>
-
                                 </div>
-                            </form>
+
+                                <div class="col-lg-3 col-md-3 col-sm-12 br-left-p">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="text" class="form-control" placeholder="Location...">
+                                            <i class="theme-cl ti-target"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <select id="list-category" class="form-control">
+                                                <option value="">&nbsp;</option>
+                                                <option value="1">Spa & Bars</option>
+                                                <option value="2">Restaurants</option>
+                                                <option value="3">Hotels</option>
+                                                <option value="4">Educations</option>
+                                                <option value="5">Business</option>
+                                                <option value="6">Retail & Shops</option>
+                                                <option value="7">Garage & Services</option>
+                                            </select>
+                                            <i class="theme-cl ti-briefcase"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-12">
+                                    <div class="form-group">
+                                        <a href="#" class="btn search-btn">Search</a>
+                                    </div>
+                                </div>
+
+                            </div>
 
                         </div>
 
@@ -56,10 +79,39 @@
     </div>
     <!-- ============================ Hero Banner End ================================== -->
 
+    <!-- ================= Explore Places ================= -->
+    <section>
+        <div class="container">
+
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="sec-heading center">
+                        <h2>Recent</h2>
+                        <h3>Recent Add <span class="theme-cl">Business</span></h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+            <livewire:latest-places />
+
+        </div>
+    </section>
+    <!-- ================================= Explore Property =============================== -->
+
     <!-- ============================ Calegory Start ================================== -->
     <section class="half light gray">
         <div class="container">
-
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="sec-heading center">
+                        <h2>Category</h2>
+                        <h3>All Business <span class="theme-cl">Category</span></h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
             <div class="row">
                 <div class="owl-carousel owl-theme" id="categorie-slide">
 
@@ -199,6 +251,7 @@
     </section>
     <!-- ============================ Calegory End ================================== -->
 
+
     <!-- ============================ Listings Start ================================== -->
     <section>
         <div class="container">
@@ -208,7 +261,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="sec-heading center">
                         <h2>Featured</h2>
-                        <h3>Latest <span class="theme-cl">Places</span></h3>
+                        <h3>Top Rated <span class="theme-cl">Business</span></h3>
                     </div>
                 </div>
             </div>
@@ -216,18 +269,10 @@
 
             <livewire:top-rated-places />
 
-            <!-- Row -->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 text-center">
-                    <a href="half-map-with-grid2-layout" class="btn btn-light btn-md rounded">Explore More
-                        Listings</a>
-                </div>
-            </div>
-            <!-- Row -->
-
         </div>
     </section>
     <!-- ============================ Listings End ================================== -->
+
 
     <!-- ============================ Reviews Start ================================== -->
     <section class="gray">
@@ -334,6 +379,66 @@
     </section>
     <!-- ============================ Reviews End ================================== -->
 
+    <!-- ============================ Achievement Start ================================== -->
+    <section>
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-10 text-center">
+                    <div class="sec-heading center mb-4">
+                        <h2>Achievement</h2>
+                        <h3>Some true <span class="theme-cl">Facts</span></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="achievement-wrap">
+                        <div class="achievement-content">
+                            <div class="ache-icon purple"><i class="ti-agenda"></i></div>
+                            <h4><span class="cto">9.8</span>M</h4>
+                            <p>Listing Posted</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="achievement-wrap">
+                        <div class="achievement-content">
+                            <div class="ache-icon green"><i class="ti-user"></i></div>
+                            <h4><span class="cto">200</span>K</h4>
+                            <p>Total Authors</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="achievement-wrap">
+                        <div class="achievement-content">
+                            <div class="ache-icon yellow"><i class="ti-medall-alt"></i></div>
+                            <h4><span class="cto">99</span>K</h4>
+                            <p>Win Awards</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="achievement-wrap">
+                        <div class="achievement-content">
+                            <div class="ache-icon red"><i class="ti-face-smile"></i></div>
+                            <h4><span class="cto">7.2</span>M</h4>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- ============================ Achievement End ================================== -->
+
     <!-- ================================= Blog Grid ================================== -->
     <section>
         <div class="container">
@@ -342,7 +447,7 @@
                 <div class="col text-center">
                     <div class="sec-heading center">
                         <h2>News & Blog</h2>
-                        <h3>Updates From <span class="theme-cl">Reveal</span></h3>
+                        <h3>Updates From <span class="theme-cl">BMApp</span></h3>
                     </div>
                 </div>
             </div>
@@ -365,8 +470,8 @@
                         <div class="Reveal-blog-body">
                             <h4 class="bl-title"><a href="blog-detail.html">Why people choose listio for own
                                     properties</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore. </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore. </p>
                         </div>
 
                         <div class="blog-cates">
@@ -395,8 +500,8 @@
                         <div class="Reveal-blog-body">
                             <h4 class="bl-title"><a href="blog-detail.html">List of benifits and impressive listeo
                                     services</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore. </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore. </p>
                         </div>
 
                         <div class="blog-cates">
@@ -423,10 +528,10 @@
                         </div>
 
                         <div class="Reveal-blog-body">
-                            <h4 class="bl-title"><a href="blog-detail.html">What people says about listio
-                                    properties</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore. </p>
+                            <h4 class="bl-title"><a href="blog-detail.html">What people says about listio properties</a>
+                            </h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore. </p>
                         </div>
 
                         <div class="blog-cates">
@@ -444,44 +549,4 @@
         </div>
     </section>
     <!-- ============================= Blog Grid End ================================ -->
-
-    <!-- ============================ Call To Action Start ================================== -->
-    <section class="p-0">
-        <div class="container">
-            <div class="row call-wrapios theme-bg">
-
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="call-wrapios-box">
-                        <div class="call-wrapios-box-icon">
-                            <img src="assets/img/big-24-hours.svg" class="img-fluid" alt="" />
-                        </div>
-                        <div class="call-wrapios-box-caption">
-                            <h5>Make A Call</h5>
-                            <h3>+91 532 548 7596</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="call-wrapios-box">
-                        <div class="call-wrapios-box-icon">
-                            <img src="assets/img/big-newsletter.svg" class="img-fluid" alt="" />
-                        </div>
-                        <div class="call-wrapios-box-caption">
-                            <h5>Subscribe Now!</h5>
-                            <div class="inner-flexible-box subscribe-box">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter your mail here">
-                                    <button class="btn btn-subscribe" type="button"><i
-                                            class="fa fa-arrow-right"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- ============================ Call To Action End ================================== -->
 @endsection

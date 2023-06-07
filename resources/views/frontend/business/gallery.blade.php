@@ -74,11 +74,11 @@
 
 
         <!-- Row -->
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12 col-md-12 text-center">
                 <a href="half-map-with-grid2-layout" class="btn btn-light btn-md rounded">Explore More Listings</a>
             </div>
-        </div>
+        </div> --}}
         <!-- Row -->
 
         </div>
