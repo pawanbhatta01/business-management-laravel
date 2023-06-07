@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Contact;
 use Livewire\Component;
 use App\Models\Business;
+use App\Models\BusinessAbout;
 use App\Models\BusinessPage;
 use App\Models\BusinessSiteConfig;
 use App\Models\Schedule;
@@ -109,6 +110,10 @@ class UserManageBusiness extends Component
                 'slug' => $slug,
             ]);
         }
+
+        BusinessAbout::create([
+            'business_id' => $business->id
+        ]);
         $this->dispatchBrowserEvent('message', ['message' => "Business is added successfully."]);
         $this->dispatchBrowserEvent('modal-close');
         $this->resetInputs();
@@ -191,8 +196,9 @@ class UserManageBusiness extends Component
             File::delete(public_path('images/' . $file->link));
         }
         $business->files->forceDelete();
+        $business->about->forceDelete();
         $business->forceDelete();
-        $this->dispatchBrowserEvent('message', ['message' => "Business is permanently deleted."]);
+        $this->dispatchBrowserEvent('message', ['message' => "About is successfully updated."]);
         $this->dispatchBrowserEvent('modal-close');
         $this->resetInputs();
     }

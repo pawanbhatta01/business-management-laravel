@@ -17,7 +17,9 @@
                 <div class="tr-list-wrap">
                     <div class="tr-list-detail">
                         <div class="tr-list-thumb">
-                            <img src="{{ asset('images/' . $business->image) }}" class="img-responsive" alt="" />
+                            <img src="{{ asset('images/' . $business->image) }}"
+                                style="height: 90px !important; object-fit:cover !important" class="img-responsive w-100"
+                                alt="" />
                         </div>
                         <div class="tr-list-info">
                             {{-- <div class="cate-gorio"><a href="#">Restaurant</a></div> --}}
@@ -270,7 +272,7 @@
 
                                     <li>
                                         <div class="Reveal-service-icon">
-                                            <a href="#">
+                                            <a href="tel:{{ $business->contact->tel }}">
                                                 <div class="Reveal-icon-box-round">
                                                     <i class="lni-phone-handset"></i>
                                                 </div>
@@ -283,7 +285,7 @@
 
                                     <li>
                                         <div class="Reveal-service-icon">
-                                            <a href="#">
+                                            <a href="mailto:{{ $business->contact->email }}">
                                                 <div class="Reveal-icon-box-round">
                                                     <i class="lni-envelope"></i>
                                                 </div>

@@ -15,7 +15,8 @@
                 <div class="tr-list-wrap">
                     <div class="tr-list-detail">
                         <div class="tr-list-thumb">
-                            <img src="{{ asset('images/' . $business->image) }}" class="img-responsive" alt="" />
+                            <img src="{{ asset('images/' . $business->image) }}" class="img-responsive w-100"
+                                style="height: 90px !important; object-fit:cover !important" alt="" />
                         </div>
                         <div class="tr-list-info">
                             {{-- <div class="cate-gorio"><a href="#">Restaurant</a></div> --}}
@@ -67,8 +68,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="doc_video">
                         <div class="thumb">
-                            <img class="pro_img img-fluid w100" src="https://via.placeholder.com/1200x800" alt="7.jpg">
-                            <div class="overlay_icon">
+                            <img class="pro_img img-fluid w-100" src="{{ asset('images/' . $business->about->image) }}">
+                            {{-- <div class="overlay_icon">
                                 <div class="bb-video-box">
                                     <div class="bb-video-box-inner">
                                         <div class="bb-video-box-innerup">
@@ -77,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -85,14 +86,11 @@
                 <!-- Single Box -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="about-captione">
-                        <h6 class="text-info">MediPure Tips</h6>
-                        <h2>Good Health<br>Moves Us Forward</h2>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium avoids pleasure
-                            itself, because doloremque sunt explicabo. avoids pleasure itself, because it is pleasure, but
-                            because those who do not know how to pursue pleasure undertakes laborious</p>
-                        <div class="authorct-button">
+                        <h2>{{ $business->about->title }}</h2>
+                        <p>{{ $business->about->description }}</p>
+                        {{-- <div class="authorct-button">
                             <a href="#" class="btn btn-theme rounded">Read More</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 

@@ -152,6 +152,12 @@
                         <div data-i18n="Account Settings">Settings</div>
                     </a>
                 </li>
+                <li class="menu-item {{ request()->routeIs('business.about', $slug) ? 'active' : '' }}">
+                    <a href="{{ route('business.about', $slug) }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <div data-i18n="Account Settings">About</div>
+                    </a>
+                </li>
             @endif
         @else
             <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">

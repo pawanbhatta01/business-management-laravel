@@ -69,4 +69,8 @@ class Business extends Model
     {
         return $this->hasMany(BusinessSiteConfig::class, 'business_id');
     }
+    public function about()
+    {
+        return $this->hasOne(BusinessAbout::class, 'business_id');
+    }
 }

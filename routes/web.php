@@ -47,6 +47,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('{slug}/services', [BusinessController::class, 'services'])->name('services');
         Route::get('{slug}/contacts', [BusinessController::class, 'contacts'])->name('contacts');
         Route::get('{slug}/settings', [BusinessController::class, 'settings'])->name('settings');
+        Route::get('{slug}/about', [BusinessController::class, 'about'])->name('about');
     });
 });
 

@@ -38,7 +38,7 @@
                                 style="width: 70; height:80;background-color: rgb(222, 219, 219); border-radius:50%; object-fit:cover" />
                         @else
                             @php
-                                $name = Auth::user()->name;
+                                $name = $rating->user->name;
                                 $name = explode(' ', $name);
                                 $name = strtoupper(substr($name[0], 0, 1) . substr($name[1], 0, 1));
                             @endphp
