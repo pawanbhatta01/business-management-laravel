@@ -184,6 +184,12 @@
                     <div data-i18n="Analytics">Testimonials</div>
                 </a>
             </li>
+            <li class="menu-item {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
+                <a href="{{ route('admin.settings') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-book"></i>
+                    <div data-i18n="Analytics">Settings</div>
+                </a>
+            </li>
         @endif
     </ul>
 </aside>

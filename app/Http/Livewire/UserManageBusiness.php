@@ -86,7 +86,7 @@ class UserManageBusiness extends Component
             ]);
         }
 
-        $keys = array("logo", "website_title", "facebook", "instagram", "linkedin", "youtube", "tiktok", "footer_about", "copyright", "website");
+        $keys = array("facebook", "instagram", "linkedin", "youtube", "tiktok", "website");
 
         foreach ($keys as $key) {
             BusinessSiteConfig::create([

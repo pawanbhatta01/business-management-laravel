@@ -24,4 +24,8 @@ class AdminController extends Controller
     {
         return view('admin.admin.testmonials');
     }
+    public function settings()
+    {
+        return view('admin.admin.settings');
+    }
 }

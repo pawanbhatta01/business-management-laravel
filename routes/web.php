@@ -29,6 +29,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('users', [AdminController::class, 'users'])->name('users');
         Route::get('business', [AdminController::class, 'business'])->name('business');
         Route::get('testimonials', [AdminController::class, 'testimonials'])->name('testimonials');
+        Route::get('settings', [AdminController::class, 'settings'])->name('settings');
     });
 
     Route::get('', [BusinessController::class, 'dashboard'])->name('dashboard')->middleware('auth');

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\SiteConfig;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Auth;
@@ -25,5 +27,14 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'role' => 0
         ]);
+
+        $keys = array("logo", "website_title", "facebook", "instagram", "linkedin", "youtube", "tiktok", "footer_about", "copyright", "website", "posted", "author", "awards", "clients", "address", "phone", "email", "tel");
+
+
+        foreach ($keys as $key) {
+            SiteConfig::create([
+                'key' => $key,
+            ]);
+        }
     }
 }
