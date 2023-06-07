@@ -291,85 +291,28 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="owl-carousel owl-theme" id="lists-slide">
 
-                        <!-- Single Review -->
-                        <div class="item testimonial-center">
-                            <div class="Reveal-smart-tes-author">
-                                <div class="Reveal-st-author-box">
-                                    <div class="Reveal-st-author-thumb">
-                                        <img src="https://via.placeholder.com/400x400" class="img-fluid"
-                                            alt="" />
-                                    </div>
-                                    <div class="Reveal-st-author-info">
-                                        <h4 class="Reveal-st-author-title">Adam Williams</h4>
-                                        <span class="Reveal-st-author-subtitle theme-cl">CEO Of Microwoft</span>
+                        @foreach ($testimonials as $testimonial)
+                            <!-- Single Review -->
+                            <div class="item testimonial-center">
+                                <div class="Reveal-smart-tes-author">
+                                    <div class="Reveal-st-author-box">
+                                        <div class="Reveal-st-author-thumb">
+                                            <img src="{{ asset('images/' . $testimonial->business->image) }}"
+                                                class="img-fluid" alt="" />
+                                        </div>
+                                        <div class="Reveal-st-author-info">
+                                            <h4 class="Reveal-st-author-title">{{ $testimonial->name }}</h4>
+                                            <span
+                                                class="Reveal-st-author-subtitle theme-cl">{{ $testimonial->post }}</span>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="Reveal-smart-tes-content">
+                                    <p>{{ $testimonial->description }}</p>
+                                </div>
                             </div>
-                            <div class="Reveal-smart-tes-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et.</p>
-                            </div>
-                        </div>
+                        @endforeach
 
-                        <!-- Single Review -->
-                        <div class="item testimonial-center">
-                            <div class="Reveal-smart-tes-author">
-                                <div class="Reveal-st-author-box">
-                                    <div class="Reveal-st-author-thumb">
-                                        <img src="https://via.placeholder.com/400x400" class="img-fluid"
-                                            alt="" />
-                                    </div>
-                                    <div class="Reveal-st-author-info">
-                                        <h4 class="Reveal-st-author-title">Lilly Wikdoner</h4>
-                                        <span class="Reveal-st-author-subtitle theme-cl">Content Writer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Reveal-smart-tes-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et.</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Review -->
-                        <div class="item testimonial-center">
-                            <div class="Reveal-smart-tes-author">
-                                <div class="Reveal-st-author-box">
-                                    <div class="Reveal-st-author-thumb">
-                                        <img src="https://via.placeholder.com/400x400" class="img-fluid"
-                                            alt="" />
-                                    </div>
-                                    <div class="Reveal-st-author-info">
-                                        <h4 class="Reveal-st-author-title">Shaurya Williams</h4>
-                                        <span class="Reveal-st-author-subtitle theme-cl">Manager Of Doodle</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Reveal-smart-tes-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et.</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Review -->
-                        <div class="item testimonial-center">
-                            <div class="Reveal-smart-tes-author">
-                                <div class="Reveal-st-author-box">
-                                    <div class="Reveal-st-author-thumb">
-                                        <img src="https://via.placeholder.com/400x400" class="img-fluid"
-                                            alt="" />
-                                    </div>
-                                    <div class="Reveal-st-author-info">
-                                        <h4 class="Reveal-st-author-title">Shrithi Setthi</h4>
-                                        <span class="Reveal-st-author-subtitle theme-cl">CEO Of Applio</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Reveal-smart-tes-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et.</p>
-                            </div>
-                        </div>
 
                     </div>
                 </div>

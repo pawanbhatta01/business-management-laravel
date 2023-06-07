@@ -73,4 +73,8 @@ class Business extends Model
     {
         return $this->hasOne(BusinessAbout::class, 'business_id');
     }
+    public function testimonials()
+    {
+        return $this->hasMany(Testimonial::class, 'business_id');
+    }
 }

@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Business;
 use App\Models\BusinessPage;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $testimonials = Testimonial::all();
+        return view('frontend.index', compact('testimonials'));
     }
 
     public function businessSearch(Request $request)

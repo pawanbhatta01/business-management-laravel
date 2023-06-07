@@ -289,6 +289,7 @@
         });
         window.addEventListener('modal-close', event => {
             $('#add').modal('hide');
+            $('#show').modal('hide');
             $('#edit').modal('hide');
             $('#delete').modal('hide');
             $('#restore').modal('hide');
