@@ -68,7 +68,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="doc_video">
                         <div class="thumb">
-                            <img class="pro_img img-fluid w-100" src="{{ asset('images/' . $business->about->image) }}">
+                            <img class="pro_img img-fluid w-100" style="height:250px ;object-fit: cover;"
+                                src="{{ asset('images/' . $business->about->image) }}">
                             {{-- <div class="overlay_icon">
                                 <div class="bb-video-box">
                                     <div class="bb-video-box-inner">

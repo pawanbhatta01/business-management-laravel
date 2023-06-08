@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Business;
 use App\Models\BusinessPage;
+use App\Models\SiteConfig;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class FrontendController extends Controller
     public function index()
     {
         $testimonials = Testimonial::all();
-        return view('frontend.index', compact('testimonials'));
+        $settings = SiteConfig::all();
+        return view('frontend.index', compact('testimonials', 'settings'));
     }
 
     public function businessSearch(Request $request)

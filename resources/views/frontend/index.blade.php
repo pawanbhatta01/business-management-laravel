@@ -5,6 +5,13 @@
 @endsection
 
 @section('content')
+    @php
+        function getValue(string $key)
+        {
+            $data = \App\Models\SiteConfig::where('key', $key)->first();
+            return $data->value;
+        }
+    @endphp
     <div class="image-cover hero-banner" style="background:url(https://via.placeholder.com/1920x900) no-repeat;"
         data-overlay="6">
         <div class="container">
@@ -340,7 +347,7 @@
                     <div class="achievement-wrap">
                         <div class="achievement-content">
                             <div class="ache-icon purple"><i class="ti-agenda"></i></div>
-                            <h4><span class="cto">9.8</span>M</h4>
+                            <h4>{{ getValue('posted') }}</h4>
                             <p>Listing Posted</p>
                         </div>
                     </div>
@@ -350,7 +357,7 @@
                     <div class="achievement-wrap">
                         <div class="achievement-content">
                             <div class="ache-icon green"><i class="ti-user"></i></div>
-                            <h4><span class="cto">200</span>K</h4>
+                            <h4>{{ getValue('author') }}</h4>
                             <p>Total Authors</p>
                         </div>
                     </div>
@@ -360,7 +367,7 @@
                     <div class="achievement-wrap">
                         <div class="achievement-content">
                             <div class="ache-icon yellow"><i class="ti-medall-alt"></i></div>
-                            <h4><span class="cto">99</span>K</h4>
+                            <h4>{{ getValue('awards') }}</h4>
                             <p>Win Awards</p>
                         </div>
                     </div>
@@ -370,7 +377,7 @@
                     <div class="achievement-wrap">
                         <div class="achievement-content">
                             <div class="ache-icon red"><i class="ti-face-smile"></i></div>
-                            <h4><span class="cto">7.2</span>M</h4>
+                            <h4>{{ getValue('clients') }}</h4>
                             <p>Happy Clients</p>
                         </div>
                     </div>

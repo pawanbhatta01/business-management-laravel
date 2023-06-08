@@ -20,7 +20,7 @@ class UserManageBusinessAbout extends Component
         return [
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required|url'
+            'image' => 'required'
         ];
     }
 

@@ -167,6 +167,15 @@ class UserManageBusiness extends Component
     public function delete()
     {
         $business = Business::find($this->business_id);
+        $business->contact->delete();
+        $business->address->delete();
+        $business->schedules->delete();
+        $business->ratings->delete();
+        $business->pages->delete();
+        $business->menus->delete();
+        $business->files->delete();
+        $business->about->delete();
+        $business->testimonials->delete();
         $business->delete();
         $this->dispatchBrowserEvent('message', ['message' => "Business is temporarily deleted."]);
         $this->dispatchBrowserEvent('modal-close');
@@ -197,6 +206,7 @@ class UserManageBusiness extends Component
         }
         $business->files->forceDelete();
         $business->about->forceDelete();
+        $business->testimonials->forceDelete();
         $business->forceDelete();
         $this->dispatchBrowserEvent('message', ['message' => "About is successfully updated."]);
         $this->dispatchBrowserEvent('modal-close');
